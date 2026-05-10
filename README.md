@@ -31,15 +31,22 @@ python app.py
 Open http://localhost:5000
 
 ## Project Structure
+
+```text
 task-manager/
-├── app.py            # App factory + entry point
-├── extensions.py     # Shared SocketIO (breaks circular imports)
-├── config.py         # Config from .env
-├── models.py         # SQLAlchemy models
+│
+├── app.py                 # App factory + entry point
+├── extensions.py          # Shared SocketIO (breaks circular imports)
+├── config.py              # Config from .env
+├── models.py              # SQLAlchemy models
+│
 ├── routes/
-│   ├── auth.py       # Register / Login / Logout
-│   ├── tasks.py      # CRUD REST API + WS emit
-│   └── analytics.py  # Pandas/NumPy analytics endpoint
-├── templates/        # Jinja2 HTML
-├── static/           # CSS + JS
-└── schema.sql        # Raw SQL reference (optional)
+│   ├── auth.py            # Register / Login / Logout
+│   ├── tasks.py           # CRUD REST API + WebSocket emit
+│   └── analytics.py       # Pandas/NumPy analytics endpoint
+│
+├── templates/             # Jinja2 HTML templates
+├── static/                # CSS + JavaScript files
+│
+└── schema.sql             # Raw SQL reference (optional)
+```
