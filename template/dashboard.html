@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard – TaskManager</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+  <!-- ── Navbar ── -->
+  <nav class="navbar">
+    <span class="brand">⚡ TaskManager</span>
+    <span>Welcome, <strong>{{ current_user.username }}</strong></span>
+    <a href="{{ url_for('auth.logout') }}" class="btn btn-sm">Logout</a>
+  </nav>
+
+  <main class="container">
+
+    <!-- ── Analytics Banner ── -->
+    <section class="analytics" id="analytics">
+      <div class="stat-card" id="stat-total">
+        <h3 id="a-total">–</h3><p>Total Tasks</p>
+      </div>
+      <div class="stat-card completed">
+        <h3 id="a-completed">–</h3><p>Completed</p>
+      </div>
+      <div class="stat-card pending">
+        <h3 id="a-pending">–</h3><p>Pending</p>
+      </div>
+      <div class="stat-card pct">
+        <h3 id="a-pct">–</h3><p>Completion %</p>
+      </div>
+    </section>
+
+    <!-- ── Create Task Form ── -->
+    <section class="card">
+      <h2>New Task</h2>
+      <div class="form-row">
+        <input  id="f-title" type="text"   placeholder="Title *" required>
+        <input  id="f-desc"  type="text"   placeholder="Description">
+        <select id="f-priority">
+          <option>Low</option>
+          <option selected>Medium</option>
+          <option>High</option>
+        </select>
+        <button onclick="createTask()">Add Task</button>
+      </div>
+    </section>
+
+    <!-- ── Task List ── -->
+    <section class="card">
+      <h2>My Tasks</h2>
+      <table id="task-table">
+        <thead>
+          <tr>
+            <th>Title</th><th>Description</th>
+            <th>Priority</th><th>Status</th>
+            <th>Created</th><th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="task-body">
+          {% for t in tasks %}
+          <tr id="row-{{ t.id }}">
+            <td>{{ t.title }}</td>
+            <td>{{ t.description }}</td>
+            <td><span class="badge {{ t.priority|lower }}">{{ t.priority }}</span></td>
+            <td>
+              <select onchange="updateStatus({{ t.id }}, this.value)">
+                <option {% if t.status=='Pending'   %}selected{% endif %}>Pending</option>
+                <option {% if t.status=='Completed' %}selected{% endif %}>Completed</option>
+              </select>
+            </td>
+            <td>{{ t.created_at.strftime('%Y-%m-%d') }}</td>
+            <td><button class="btn-del" onclick="deleteTask({{ t.id }})">🗑</button></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </section>
+
+  </main>
+
+  <!-- Socket.IO client (served by Flask-SocketIO) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.5/socket.io.min.js"></script>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
