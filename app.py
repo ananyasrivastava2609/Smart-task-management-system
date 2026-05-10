@@ -5,7 +5,7 @@ from flask import Flask
 from flask_login import LoginManager
 from config import Config
 from models import db, bcrypt, User
-from flask_socketio import SocketIO
+from extensions import socketio  # Shared SocketIO instance for real-time updates
 
 # ── Shared SocketIO instance (imported by routes/tasks.py) ──
 socketio = SocketIO()
