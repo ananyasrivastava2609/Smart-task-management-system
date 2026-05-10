@@ -8,7 +8,7 @@ from models import db, bcrypt, User
 from extensions import socketio  # Shared SocketIO instance for real-time updates
 
 # ── Shared SocketIO instance (imported by routes/tasks.py) ──
-socketio = SocketIO()
+#socketio = SocketIO()
 
 # Expose socketio via a tiny extensions module so routes can import it
 import extensions  # noqa: E402 – populated below
