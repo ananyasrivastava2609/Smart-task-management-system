@@ -1,0 +1,84 @@
+/* ── Reset & Variables ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #f0f2f5;
+  --card: #ffffff;
+  --primary: #4f46e5;
+  --danger: #ef4444;
+  --success: #22c55e;
+  --warn: #f59e0b;
+  --text: #1e293b;
+  --muted: #64748b;
+  --radius: 10px;
+}
+
+body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); }
+
+/* ── Auth ── */
+.auth-page { display: flex; align-items: center; justify-content: center; min-height: 100vh; }
+.auth-card  { background: var(--card); padding: 2.5rem; border-radius: var(--radius);
+              box-shadow: 0 4px 24px rgba(0,0,0,.1); width: 100%; max-width: 400px; }
+.auth-card h2 { margin-bottom: 1.5rem; color: var(--primary); }
+.auth-card input { display: block; width: 100%; padding: .75rem 1rem;
+                   border: 1px solid #d1d5db; border-radius: 6px; margin-bottom: 1rem; font-size: 1rem; }
+.auth-card button { width: 100%; padding: .8rem; background: var(--primary); color: #fff;
+                    border: none; border-radius: 6px; font-size: 1rem; cursor: pointer; }
+.auth-card p { margin-top: 1rem; color: var(--muted); text-align: center; }
+.auth-card a { color: var(--primary); }
+
+/* ── Alerts ── */
+.alert { padding: .7rem 1rem; border-radius: 6px; margin-bottom: 1rem; font-size: .9rem; }
+.alert-danger  { background: #fee2e2; color: #b91c1c; }
+.alert-success { background: #dcfce7; color: #166534; }
+
+/* ── Navbar ── */
+.navbar { display: flex; align-items: center; justify-content: space-between;
+          padding: 1rem 2rem; background: var(--primary); color: #fff; }
+.brand { font-size: 1.3rem; font-weight: 700; }
+.btn-sm { padding: .4rem .9rem; background: rgba(255,255,255,.2);
+          color: #fff; border-radius: 6px; text-decoration: none; font-size: .85rem; }
+
+/* ── Layout ── */
+.container { max-width: 1100px; margin: 2rem auto; padding: 0 1rem; }
+.card { background: var(--card); border-radius: var(--radius);
+        box-shadow: 0 2px 12px rgba(0,0,0,.07); padding: 1.5rem; margin-bottom: 1.5rem; }
+.card h2 { margin-bottom: 1rem; font-size: 1.1rem; color: var(--muted); }
+
+/* ── Analytics ── */
+.analytics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 1.5rem; }
+.stat-card { background: var(--card); border-radius: var(--radius); padding: 1.25rem;
+             box-shadow: 0 2px 12px rgba(0,0,0,.07); text-align: center; border-top: 4px solid var(--primary); }
+.stat-card.completed { border-color: var(--success); }
+.stat-card.pending   { border-color: var(--warn); }
+.stat-card.pct       { border-color: var(--primary); }
+.stat-card h3 { font-size: 2rem; font-weight: 700; }
+.stat-card p  { color: var(--muted); margin-top: .25rem; }
+
+/* ── Form Row ── */
+.form-row { display: flex; gap: .75rem; flex-wrap: wrap; }
+.form-row input, .form-row select {
+  flex: 1; min-width: 140px; padding: .65rem .9rem;
+  border: 1px solid #d1d5db; border-radius: 6px; font-size: .95rem; }
+.form-row button { padding: .65rem 1.4rem; background: var(--primary); color: #fff;
+                   border: none; border-radius: 6px; cursor: pointer; font-size: .95rem; }
+
+/* ── Table ── */
+table { width: 100%; border-collapse: collapse; font-size: .92rem; }
+th    { text-align: left; padding: .6rem .8rem; border-bottom: 2px solid #e5e7eb; color: var(--muted); }
+td    { padding: .65rem .8rem; border-bottom: 1px solid #f1f5f9; }
+tr:hover td { background: #f8fafc; }
+
+/* ── Badges ── */
+.badge { padding: .25rem .65rem; border-radius: 999px; font-size: .78rem; font-weight: 600; }
+.badge.low    { background: #dcfce7; color: #166534; }
+.badge.medium { background: #fef9c3; color: #854d0e; }
+.badge.high   { background: #fee2e2; color: #b91c1c; }
+
+/* ── Delete btn ── */
+.btn-del { background: none; border: none; cursor: pointer; font-size: 1.1rem; }
+
+/* ── Responsive ── */
+@media (max-width: 700px) {
+  .analytics { grid-template-columns: repeat(2, 1fr); }
+}
