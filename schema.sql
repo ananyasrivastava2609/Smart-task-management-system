@@ -1,8 +1,5 @@
--- Run once to create the database (optional if using SQLAlchemy init)
 CREATE DATABASE taskmanager;
 
--- SQLAlchemy will auto-create tables via db.create_all()
--- But if you prefer raw SQL:
 
 CREATE TABLE IF NOT EXISTS users (
     id          SERIAL PRIMARY KEY,
